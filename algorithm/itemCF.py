@@ -5,7 +5,7 @@ from sklearn import cross_validation as cv
 
 
 class CF:
-    def __init__(self, k):
+    def __init__(self, k, type='user'):
         self.simi = dict()
         self.N = 10
         self.user_item = dict()
@@ -14,6 +14,7 @@ class CF:
         self.k = k
         self.user_map = self.read_user('../data/ml-100k/u.user')
         self.item_map = self.read_item('../data/ml-100k/u.item')
+        self.type = type
 
     def read_file(self, name):
         header = ['user_id', 'item_id', 'rating', 'timestamp']
@@ -41,7 +42,7 @@ class CF:
                 item_map[item[0]] = [item[1], item[2], item[3], item[4]]
         return item_map
 
-    def calc_simi(self, train):
+    def calc_simi_cos(self, train):
         norm = dict()
         rec = dict()
         for id, id_rate in train.items():
@@ -55,8 +56,11 @@ class CF:
             for j, rate in j_dict.items():
                 self.simi[i][j] = rate/np.sqrt(float(norm[i] * norm[j]))
 
-    def cacl_simi_item(self):
-        self.calc_simi(self.user_item)
+    def cacl_simi(self):
+        if self.type == 'item':
+            self.calc_simi_cos(self.user_item)
+        elif self.type == 'user':
+            self.calc_simi_cos(self.item_user)
 
     def recommend_item(self, id):
         rank = dict()
@@ -64,10 +68,10 @@ class CF:
         # print self.user_item[id]
         # print sorted(self.test[id])
 
-        for u_item in stop_item:
+        for u_item, u_rate in self.user_item[id]:
             for v, item_simi in sorted(self.simi[u_item].items(), key=lambda x:x[1], reverse=True)[:self.k]:
                 if v not in stop_item:
-                    rank[v] = rank.setdefault(v, 0) + item_simi * 1
+                    rank[v] = rank.setdefault(v, 0) + item_simi * u_rate
         rank = list(sorted(rank.items(), key=lambda x: x[1], reverse=True))
         
         # hit = 0
@@ -79,24 +83,48 @@ class CF:
         return rank
 
     def precision(self):
+        return self.cacl_pre_or_recall(2)
+
+    def recall(self):
+        return self.cacl_pre_or_recall()
+
+    # 默认计算召回率
+    def cacl_pre_or_recall(self, flag=1):
         hit = 0
         all = 0
+        recommend = self.recommend_item
+        if self.type == 'user':
+            return 0
         for user, td in self.test.items():
-            rank = self.recommend_item(user)
-            # td = self.test[str(user)]
+            rank = recommend(user)
             for item, res in rank[:self.N]:
                 if item in td:
                     hit += 1
-            all += self.N
-        print 'pre', hit, all
-        return hit*1.0/all
+            if flag == 1:
+                all += len(td)
+            else:
+                all += self.N
+        return hit * 1.0 / all
+
+    def coverage(self):
+        all_items = set()
+        recommend_item = set()
+        recommend = self.recommend_item
+        if self.type == 'user':
+            return 0
+        for user, td in self.test.items():
+            all_items |= set(td)
+            rank = recommend(user)
+            for item, rate in rank:
+                if item in all_items:
+                    recommend_item.add(item)
+        return float(len(recommend_item))/len(all_items)
 
 if __name__ == '__main__':
-    itemCF = CF(8)
+    itemCF = CF(8, 'item')
     itemCF.read_file('../data/ml-100k/u.data')
-    itemCF.cacl_simi_item()
+    itemCF.cacl_simi()
     rank = itemCF.recommend_item(447)
     print itemCF.precision()
-
-
-
+    print itemCF.recall()
+    print itemCF.coverage()
