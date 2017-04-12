@@ -1,4 +1,6 @@
+# -*- coding:utf-8 -*-
 import tornado.web
+
 
 class loginHandler(tornado.web.RequestHandler):
     def get(self):

@@ -65,22 +65,28 @@ class CF:
     def recommend_item(self, id):
         rank = dict()
         stop_item = [x for x, y in self.user_item[id]]
-        # print self.user_item[id]
-        # print sorted(self.test[id])
-
         for u_item, u_rate in self.user_item[id]:
             for v, item_simi in sorted(self.simi[u_item].items(), key=lambda x:x[1], reverse=True)[:self.k]:
                 if v not in stop_item:
                     rank[v] = rank.setdefault(v, 0) + item_simi * u_rate
         rank = list(sorted(rank.items(), key=lambda x: x[1], reverse=True))
-        
-        # hit = 0
-        # for item_id, pui in rank[:10]:
-        #     print 'movie: ', self.item_map[str(item_id)][0], 'rank: ', pui, ' item_id',item_id
-        #     if item_id in self.test[id]:
-        #         hit += 1
-        # print 'hit: ', hit
         return rank
+
+    def recommend_user(self, id):
+        rank = dict()
+        stop_item = [x for x, y in self.user_item[id]]
+        for user, user_simi in sorted(self.simi[id].items(), key=lambda x: x[1], reverse=True)[:self.k]:
+            for item, rate in self.user_item[user]:
+                if item not in stop_item:
+                    rank[item] = rank.setdefault(item, 0) + user_simi * rate
+        rank = list(sorted(rank.items(), key=lambda x: x[1], reverse=True))
+        return rank
+
+    def recommend(self, id):
+        if self.type == 'item':
+            return self.recommend_item(id)
+        elif self.type == 'user':
+            return self.recommend_user(id)
 
     def precision(self):
         return self.cacl_pre_or_recall(2)
@@ -94,7 +100,7 @@ class CF:
         all = 0
         recommend = self.recommend_item
         if self.type == 'user':
-            return 0
+            recommend = self.recommend_user
         for user, td in self.test.items():
             rank = recommend(user)
             for item, res in rank[:self.N]:
@@ -111,7 +117,7 @@ class CF:
         recommend_item = set()
         recommend = self.recommend_item
         if self.type == 'user':
-            return 0
+            recommend = self.recommend_user
         for user, td in self.test.items():
             all_items |= set(td)
             rank = recommend(user)
@@ -120,11 +126,15 @@ class CF:
                     recommend_item.add(item)
         return float(len(recommend_item))/len(all_items)
 
+userCF = CF(8)
+itemCF = CF(8, 'item')
+
 if __name__ == '__main__':
-    itemCF = CF(8, 'item')
+    # itemCF = CF(8, 'item')
+    # itemCF = userCF
     itemCF.read_file('../data/ml-100k/u.data')
     itemCF.cacl_simi()
-    rank = itemCF.recommend_item(447)
+    rank = itemCF.recommend(447)
     print itemCF.precision()
     print itemCF.recall()
     print itemCF.coverage()
