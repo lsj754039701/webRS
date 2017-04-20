@@ -2,30 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33a9ec97-a47e-4159-be94-78025f9fe8c5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/ml-100k/movies.dat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SQL/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SQL/pool.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SQL/sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SQL/sql.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/SQL/sql_statement.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf/log.conf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/conf/sql.conf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/handler/baseHandler.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/log/rs.log" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/model/model.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/model/sql" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/model/sql_conn.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/algorithm/userCF.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/algorithm/__init__.py" afterPath="$PROJECT_DIR$/algorithm/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/algorithm/cool.py" afterPath="$PROJECT_DIR$/algorithm/cool.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/algorithm/itemCF.py" afterPath="$PROJECT_DIR$/algorithm/itemCF.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/ml-100k/u.item" afterPath="$PROJECT_DIR$/data/ml-100k/u.item" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/handler/indexHandler.py" afterPath="$PROJECT_DIR$/handler/indexHandler.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/model/__init__.py" afterPath="$PROJECT_DIR$/model/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.py" afterPath="$PROJECT_DIR$/server.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/shop/one/home/login.html" afterPath="$PROJECT_DIR$/template/shop/one/home/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template/shop/two/home/login.html" afterPath="$PROJECT_DIR$/template/shop/two/home/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test1.py" afterPath="$PROJECT_DIR$/test1.py" />
     </list>
     <ignored path="RS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,18 +32,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="server.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="46" column="14" lean-forward="false" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
-              <folding>
-                <element signature="e#23#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/shop/one/home/index1.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -118,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cool.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cool.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/algorithm/cool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+            <state relative-caret-position="203">
+              <caret line="80" column="28" lean-forward="true" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
               <folding>
                 <element signature="e#22#34#0" expanded="true" />
               </folding>
@@ -130,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="itemCF.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="itemCF.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/algorithm/itemCF.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2720">
-              <caret line="138" column="28" lean-forward="true" selection-start-line="138" selection-start-column="28" selection-end-line="138" selection-end-column="28" />
+            <state relative-caret-position="123">
+              <caret line="122" column="14" lean-forward="false" selection-start-line="122" selection-start-column="14" selection-end-line="122" selection-end-column="14" />
               <folding>
                 <element signature="e#27#46#0" expanded="true" />
               </folding>
@@ -810,13 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/userCF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1280">
-          <caret line="76" column="4" lean-forward="false" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/handler/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -943,16 +902,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/itemCF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2720">
-          <caret line="138" column="28" lean-forward="true" selection-start-line="138" selection-start-column="28" selection-end-line="138" selection-end-column="28" />
-          <folding>
-            <element signature="e#27#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
@@ -1028,10 +977,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/cool.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="92" column="0" lean-forward="true" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        <state relative-caret-position="203">
+          <caret line="80" column="28" lean-forward="true" selection-start-line="80" selection-start-column="28" selection-end-line="80" selection-end-column="28" />
           <folding>
             <element signature="e#22#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/userCF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="76" column="4" lean-forward="false" selection-start-line="76" selection-start-column="4" selection-end-line="76" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/itemCF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="122" column="14" lean-forward="false" selection-start-line="122" selection-start-column="14" selection-end-line="122" selection-end-column="14" />
+          <folding>
+            <element signature="e#27#46#0" expanded="true" />
           </folding>
         </state>
       </provider>
