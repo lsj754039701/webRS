@@ -1,0 +1,28 @@
+create table user(
+    id int primary key auto_increment,
+    nick varchar(50),
+    age int not null,
+    sex char(1) not null,
+    work varchar(20),
+    account varchar(20) not null,
+    pwd varchar(20) not null
+    );
+
+create table movies(
+    id int primary key auto_increment,
+    name varchar(50) not null,
+    time date not null,
+    url varchar(100) not null,
+    type varchar(20)
+    );
+
+create table behavior(
+    id int primary key auto_increment,
+    user_id int,
+    item_id int,
+    rate int not null default 0,
+    time varchar(20),
+    foreign key(user_id) references user(id) on delete cascade
+    );
+
+insert into user(nick, age, sex, work, account, pwd) values('zll', 22, 'F', 'student', 'zll', 'zll');

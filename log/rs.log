@@ -1,0 +1,104 @@
+[Tue, 18 Apr 2017 22:00:44 [line:41](sql.py)] INFO: begin fetchall, sql_str: select work, count(*) from user group by work
+[Tue, 18 Apr 2017 22:00:44 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 22:00:44 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Tue, 18 Apr 2017 22:00:44 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 22:00:44 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Tue, 18 Apr 2017 22:00:45 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 22:05:56 [line:41](sql.py)] INFO: begin fetchall, sql_str: select work, count(*) from user group by work
+[Tue, 18 Apr 2017 22:05:56 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 22:05:56 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Tue, 18 Apr 2017 22:05:56 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 22:05:56 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Tue, 18 Apr 2017 22:05:56 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 22:06:08 [line:41](sql.py)] INFO: begin fetchall, sql_str: select work, count(*) from user group by work
+[Tue, 18 Apr 2017 22:06:08 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 22:06:08 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Tue, 18 Apr 2017 22:06:08 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 22:06:08 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Tue, 18 Apr 2017 22:06:08 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 23:46:34 [line:41](sql.py)] INFO: begin fetchall, sql_str: select work, count(*) from user group by work
+[Tue, 18 Apr 2017 23:46:34 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 23:46:34 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Tue, 18 Apr 2017 23:46:34 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 23:46:34 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Tue, 18 Apr 2017 23:46:34 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 23:47:02 [line:41](sql.py)] INFO: begin fetchall, sql_str: select work, count(*) from user group by work
+[Tue, 18 Apr 2017 23:47:02 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 23:47:02 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Tue, 18 Apr 2017 23:47:02 [line:51](sql.py)] INFO: end fetchall
+[Tue, 18 Apr 2017 23:47:02 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Tue, 18 Apr 2017 23:47:02 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 16:32:57 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Wed, 19 Apr 2017 16:32:57 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 16:32:57 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Wed, 19 Apr 2017 16:32:57 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 16:33:39 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Wed, 19 Apr 2017 16:33:39 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 16:33:39 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Wed, 19 Apr 2017 16:33:40 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 16:54:55 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Wed, 19 Apr 2017 16:54:55 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 16:54:55 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Wed, 19 Apr 2017 16:54:55 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 16:55:57 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Wed, 19 Apr 2017 16:55:57 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 16:55:57 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Wed, 19 Apr 2017 16:55:57 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 17:00:05 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Wed, 19 Apr 2017 17:00:05 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 17:00:05 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Wed, 19 Apr 2017 17:00:06 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 17:00:23 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from user
+    
+[Wed, 19 Apr 2017 17:00:23 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 17:00:23 [line:41](sql.py)] INFO: begin fetchall, sql_str: 
+        select * from behavior
+    
+[Wed, 19 Apr 2017 17:00:24 [line:51](sql.py)] INFO: end fetchall
+[Wed, 19 Apr 2017 17:49:55 [line:57](sql.py)] INFO: begin fetchone,sql_str: select pwd from user where account='zll'
+[Wed, 19 Apr 2017 17:49:55 [line:67](sql.py)] INFO: end fetchone
+[Wed, 19 Apr 2017 17:52:05 [line:57](sql.py)] INFO: begin fetchone,sql_str: select pwd from user where account='zll0'
+[Wed, 19 Apr 2017 17:52:05 [line:67](sql.py)] INFO: end fetchone
+[Wed, 19 Apr 2017 17:52:36 [line:57](sql.py)] INFO: begin fetchone,sql_str: select pwd from user where account='zll0'
+[Wed, 19 Apr 2017 17:52:36 [line:67](sql.py)] INFO: end fetchone

@@ -1,4 +1,4 @@
-# -*- coding=utf-8 -*-
+    # -*- coding=utf-8 -*-
 import pandas as pd
 import numpy as np
 from sklearn import cross_validation as cv
@@ -135,6 +135,7 @@ if __name__ == '__main__':
     itemCF.read_file('../data/ml-100k/u.data')
     itemCF.cacl_simi()
     rank = itemCF.recommend(447)
+    print rank[:10]
     print itemCF.precision()
     print itemCF.recall()
     print itemCF.coverage()
