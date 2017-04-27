@@ -13,6 +13,7 @@ handlers = [
     (r'/login', loginHandler),
     (r'/registe', registerHandler),
     (r'/index', indexHandler),
+    (r'/alterPwd', indexHandler),
 ]
 
 settings = {
@@ -42,9 +43,13 @@ if __name__ == '__main__':
     rs_pro.start()
     webserver_pro.join()
     rs_pro.join()
+
     # from algorithm import *
     # c = cool()
     # c.calc()
     # user = {'age': 20, 'sex':'F', 'job': 'administrator'}
     # print c.recommend(user)
 
+    # from spider import *
+    # s = movies.movieSpider()
+    # print s.get_movie_info()
