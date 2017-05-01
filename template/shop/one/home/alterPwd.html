@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>修改密码</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+		<link rel="stylesheet" href="{{static_url('AmazeUI-2.4.2/assets/css/amazeui.css')}}" />
+		<link href="{{static_url('css/dlstyle.css')}}" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+
+		<div class="login-boxtitle">
+			<a href="home.html"><img alt="logo" src="{{static_url('images/logobig.png')}}" /></a>
+		</div>
+
+		<div class="login-banner">
+			<div class="login-main">
+				<div class="login-banner-bg"><span></span><img src="{{static_url('images/snow.png')}}" /></div>
+				<div class="login-box">
+					<h3 class="title">修改密码</h3>
+					<div class="clear"></div>
+
+					<div class="login-form">
+						  	<form action="alterPwd" method="post">
+							    <div class="user-name">
+								    <label for="user"><i class="am-icon-user"></i></label>
+								    <input type="text" name="" id="user" placeholder="请输入账号">
+							    </div>
+
+								<div >
+									<input type="password" name=""  placeholder="请输入密码">
+									<input type="password" name="" id="passwordAgain" placeholder="请确认密码">
+								</div>
+								<div class="am-cf">
+									<input type="submit" name="" value="修改密码" class="am-btn am-btn-primary am-btn-sm">
+								</div>
+           				    </form>
+					</div>
+
+
+
+				</div>
+			</div>
+		</div>
+
+		<div class="footer ">
+			<div class="footer-hd ">
+				<p>
+					欢迎进入ZLL系统
+				</p>
+			</div>
+			<div class="footer-bd ">
+				<p>
+					个性化推荐平台
+				</p>
+			</div>
+		</div>
+	</body>
+
+</html>

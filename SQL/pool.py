@@ -1,7 +1,7 @@
+# -*- coding=utf-8 -*-
 import MySQLdb
 from DBUtils.PooledDB import PooledDB
 from ConfigParser import ConfigParser
-import os
 
 
 class sqlconf:

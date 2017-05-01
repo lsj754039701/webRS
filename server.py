@@ -4,16 +4,18 @@ import tornado.ioloop
 import os
 import sys
 import multiprocessing
-import threading
 import logging.config
 from handler import *
 
 logging.config.fileConfig('conf/log.conf')
 handlers = [
     (r'/login', loginHandler),
-    (r'/registe', registerHandler),
+    (r'/registePage', registerPageHandler),
     (r'/index', indexHandler),
-    (r'/alterPwd', indexHandler),
+    (r'/alterPwdPage', alterPwdPageHandler),
+    (r'/alterPwd', alterPwdHandler),
+    (r'/movieInfo', movieInfoHandler),
+    (r'/registe', registeHandler),
 ]
 
 settings = {
@@ -44,12 +46,23 @@ if __name__ == '__main__':
     webserver_pro.join()
     rs_pro.join()
 
+
+
     # from algorithm import *
+    # c = itemCool()
+    # movie = {
+    #     'type': ['Mystery', 'Sci-Fi', 'Crime', 'Romance',  'Animation', 'Action', 'Comedy', 'Documentary',
+    #              'Musical', 'Drama', 'Horror']}
+    # print c.recommend(movie)
+    #
+    # import model
     # c = cool()
     # c.calc()
     # user = {'age': 20, 'sex':'F', 'job': 'administrator'}
-    # print c.recommend(user)
+    # movies = c.recommend(user)
+    # for movie_id, rate in movies[:3]:
+    #     print model.mongo.find_movie_by_id(movie_id)
 
-    # from spider import *
-    # s = movies.movieSpider()
-    # print s.get_movie_info()
+
+
+

@@ -3,6 +3,7 @@ import tornado.web
 from baseHandler import baseHandler
 import model
 
+
 class indexHandler(baseHandler):
     def post(self, *args, **kwargs):
         id = self.get_argument('id')

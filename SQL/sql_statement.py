@@ -25,6 +25,13 @@ def insert_movie():
         values(%s, %s, %s, %s)
     """
 
+def insert_user(user):
+    return """
+        insert into user(nick, age, sex, work, account, pwd)
+        values('%s', %s, '%s', '%s', '%s', '%s')
+    """ % (user['nick'], user['age'], user['sex'], \
+           user['job'],user['account'], user['pwd'])
+
 def get_all(table):
     return """
         select * from %s
@@ -36,3 +43,7 @@ def get_cnt(table):
 
 def get_cnt_with_work(table):
     return """select work, count(*) from %s group by work""" % table
+
+
+def get_movie_name_by_id(id):
+    return """select """

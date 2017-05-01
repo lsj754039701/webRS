@@ -31,7 +31,6 @@ class cool:
         for behavior in behaviors:
             self.item_behavior.setdefault(behavior[2], set([])).add(behavior[1])
 
-
     def calc(self):
         alpha = 100
         pfi_age = {'teen': {}, 'midlife': {}, 'old': {}}

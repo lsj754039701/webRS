@@ -4,6 +4,8 @@ import logging
 
 
 def update(sql_str):
+    logger = logging.getLogger('root')
+    logger.info('begin update,sql_str: %s' % sql_str)
     conn = pool.connection()
     cur = conn.cursor()
     flag =True
@@ -11,7 +13,7 @@ def update(sql_str):
         cur.execute(sql_str)
         conn.commit()
     except Exception, e:
-        print 'execute error: ', e.message
+        logger.error('update error.', exc_info=True)
         flag = False
         conn.rollback()
     conn.close()

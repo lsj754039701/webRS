@@ -66,3 +66,6 @@ def get_all_behavior():
     return fetchall(sql_statement.get_all("behavior"))
 
 
+def insert_user(user):
+    return update(sql_statement.insert_user(user))
+
