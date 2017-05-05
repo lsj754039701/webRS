@@ -1,10 +1,10 @@
 # -*- coding=utf-8 -*
 import model
-import os
 
 
 class cool:
-    def __init__(self):
+    def __init__(self, n=6):
+        self.N = n
         self.age_feature = {'teen': set([]), 'midlife': set([]), 'old': set([])}
         self.sex_feature = {'girl': set([]), 'boy': set([])}
         self.job_feature = {}
@@ -13,11 +13,15 @@ class cool:
         self.pfi_sex = {}
         self.pfi_job = {}
 
+        self.__feature_init()
+        self.calc()
+
+    def __feature_init(self):
         users = model.get_all_user()
         for user in users:
             if int(user[2]) < 20:
                 self.age_feature['teen'].add(user[0])
-            elif int(user[2]) >50:
+            elif int(user[2]) > 50:
                 self.age_feature['old'].add(user[0])
             else:
                 self.age_feature['midlife'].add(user[0])
@@ -60,7 +64,6 @@ class cool:
             self.pfi_job[job] = pfi[:10]
         # print self.pfi_sex
         # print self.pfi_age
-        # print self.pfi_job
 
     def get_age_type(self, age):
         type = "midlife"
@@ -86,7 +89,7 @@ class cool:
             res[movie_id] = res.setdefault(movie_id, 0) + rate
         for movie_id, rate in self.pfi_job[user['job']]:
             res[movie_id] = res.setdefault(movie_id, 0) + rate
-        return sorted(res.items(), key=lambda x:x[1], reverse=True)[:10]
+        return sorted(res.items(), key=lambda x:x[1], reverse=True)[:self.N]
 
 
 

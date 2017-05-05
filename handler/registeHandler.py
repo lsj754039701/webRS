@@ -2,6 +2,7 @@
 import tornado.web
 import model
 from baseHandler import baseHandler
+import logging
 
 
 class registeHandler(baseHandler):
@@ -21,6 +22,8 @@ class registeHandler(baseHandler):
                 break
         if flag:
             model.insert_user(user)
+            logger = logging.getLogger('web')
+            logger.info("post [registe] user_act=%s" % user['account'])
             self.set_secure_cookie('user', user['account'])
             self.render('index1.html')
         else:

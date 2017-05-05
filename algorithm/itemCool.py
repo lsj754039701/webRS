@@ -16,9 +16,10 @@ def load_movie():
 
 
 class itemCool():
-    # 默认给三个用户推荐新电影
-    def __init__(self, k=3):
-        self.k = 3
+    # 默认给十个用户推荐新电影
+    def __init__(self, k=10, n=6):
+        self.k = k
+        self.N = n
         all_movies = model.mongo.find_all_movies()
         self.movies = {}
         for movie in all_movies:
@@ -26,6 +27,9 @@ class itemCool():
         self.type_dict = self.get_type_dict()
         self.user_vec = {}
         self.__create_user_model()
+        self.new_item = model.mongo.find_new_movies()
+        self.item_rec_user = {}
+        self.rec_init()
 
     def get_type_dict(self):
         movie_dict = set([])
@@ -67,7 +71,7 @@ class itemCool():
         norm = linalg.norm(movie_vec, 2) * linalg.norm(user_vec, 2)
         return np.dot(user_vec , movie_vec) / norm
 
-    def recommend(self, movie):
+    def __recommend(self, movie):
         queue = until.priorityQueue(self.k, lambda x: x[1])
         movie_vec = self.get_type_vec(movie)
         mx = 0
@@ -76,3 +80,17 @@ class itemCool():
             mx = max( self.__calc_sim(movie_vec, user_vec), mx)
         return queue.get_all_num()
 
+    def rec_init(self):
+        for movie in self.new_item:
+            users = self.__recommend(movie)
+            self.item_rec_user[movie['_id']] = users
+        # for key, val in self.item_rec_user.items():
+        #     print key, "=> ", val
+
+    def recommend(self, user_id):
+        res = []
+        for movie_id, users in self.item_rec_user.items():
+            for user, rate in users:
+                if user_id == user:
+                    res.append((movie_id, rate))
+        return sorted(res, key=lambda x: x[1], reverse=True)[:self.N]

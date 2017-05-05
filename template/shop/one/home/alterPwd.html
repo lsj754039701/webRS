@@ -13,6 +13,22 @@
 
 		<link rel="stylesheet" href="{{static_url('AmazeUI-2.4.2/assets/css/amazeui.css')}}" />
 		<link href="{{static_url('css/dlstyle.css')}}" rel="stylesheet" type="text/css">
+		<script src="{{static_url('js/jquery-1.11.1.min.js')}}"></script>
+		<script>
+			$(document).ready(function () {
+				$("#pwdAgain").blur(function () {
+					var newpwd = $("#newpwd").val()
+					var pwdAgain = $("#pwdAgain").val()
+					$("#notify").text("两次密码不一致")
+					if (newpwd != pwdAgain) {
+						$("#notify").text("两次密码不一致")
+					}
+					else {
+					    $("#notify").text("")
+					}
+                })
+            })
+		</script>
 	</head>
 
 	<body>
@@ -28,16 +44,23 @@
 					<h3 class="title">修改密码</h3>
 					<div class="clear"></div>
 
+					<div style="text-align: center">
+						<span id="notify" style="color:red"></span>
+					</div>
+
 					<div class="login-form">
-						  	<form action="alterPwd" method="post">
+
+						  	<form action="/login" method="post">
+								<input type="text" value="alterPwd" name="reqType" hidden>
 							    <div class="user-name">
 								    <label for="user"><i class="am-icon-user"></i></label>
-								    <input type="text" name="" id="user" placeholder="请输入账号">
+								    <input type="text" name="account" id="user" placeholder="请输入账号">
 							    </div>
 
-								<div >
-									<input type="password" name=""  placeholder="请输入密码">
-									<input type="password" name="" id="passwordAgain" placeholder="请确认密码">
+								<div>
+									<input type="password" name="oldpwd"  placeholder="请输入旧密码">
+									<input type="password" name="newpwd" id="newpwd" placeholder="请输入新密码">
+									<input type="password" name="pwdAagin" id="pwdAgain" placeholder="请确认密码">
 								</div>
 								<div class="am-cf">
 									<input type="submit" name="" value="修改密码" class="am-btn am-btn-primary am-btn-sm">

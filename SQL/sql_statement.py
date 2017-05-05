@@ -47,3 +47,47 @@ def get_cnt_with_work(table):
 
 def get_movie_name_by_id(id):
     return """select """
+
+
+def get_user_by_act(account):
+    return """select * from user where account='%s'""" % account
+
+
+def alter_pwd(account, pwd):
+    return """update user set pwd='%s' where account='%s'""" % (account, pwd)
+
+
+# 用户行为计数
+def user_behavior_cnt(user_id):
+    return """
+            select count(user_id) from behavior 
+            where user_id=%s 
+            group by user_id
+            """ % str(user_id)
+
+
+def movie_behavior_cnt(movie_id):
+    return """
+        select count(item_id) from behavior
+        where item_id=%s 
+        group by item_id
+    """ % str(movie_id)
+
+
+def update_user_behavior(user_id, item_id, score):
+    return """
+        update behavior
+        set rate=%s
+        where user_id=%s and item_id=%s
+    """ % (score, user_id, item_id)
+
+
+def get_movie_score(user_id, item_id):
+    return """
+        select rate from behavior 
+        where user_id=%s and item_id=%s 
+    """ % (user_id, item_id)
+
+
+def get_user_by_id(user_id):
+    return """select * from user where id=%s""" % user_id

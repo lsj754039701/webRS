@@ -94,7 +94,10 @@ logging.config.fileConfig('conf/log.conf')
 import model
 from SQL import pool
 if __name__ == "__main__":
-    insert_movies()
+    import logging
+
+    log = logging.getLogger('web')
+    log.info("hello")
 
 
 

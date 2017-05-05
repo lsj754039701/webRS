@@ -227,7 +227,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 				<div class="drop-navigation drop-navigation">
 				  <ul class="nav nav-sidebar">
-					<li><a href="index.html" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+					<li><a href="/index" class="home-icon"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
 					<li><a href="shows.html" class="user-icon">TV Shows</a></li>
 					<li><a href="history.html" class="sub-icon"></span>History</a></li>
 					<li><a href="#" class="menu1">Movies<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span></a></li>
@@ -290,25 +290,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-sm-8 single-left">
 					<div class="song">
 						<div class="song-info">
-							<h3>Frozen</h3>
+							<h3>{{movie['name']}}</h3>
 					</div>
 						<div class="video-grid">
-							<img src="{{static_url('images/snow_info.png')}}"></img>
+							<img height="400" width="400px" src="{{static_url(movie['img_url'])}}"></img>
 						</div>
 					</div>
 					<div class="song-grid-right">
-						<div class="share">
-							<h5>Share this</h5>
-							<ul>
-								<li><a href="#" class="icon fb-icon">Facebook</a></li>
-								<li><a href="#" class="icon dribbble-icon">Dribbble</a></li>
-								<li><a href="#" class="icon twitter-icon">Twitter</a></li>
-								<li><a href="#" class="icon pinterest-icon">Pinterest</a></li>
-								<li><a href="#" class="icon whatsapp-icon">Whatsapp</a></li>
-								<li><a href="#" class="icon like">Like</a></li>
-								<li><a href="#" class="icon comment-icon">Comments</a></li>
-								<li class="view">200 Views</li>
-							</ul>
+						<div class="share" style="border: 1px dashed red;padding: 5px; height: 445px">
+							<h5>Score this</h5>
+							<br>
+							{% if movie['score'] is None %}
+								<span>you not buy this movie</span>
+							{% elif movie['score'][0] == 0 %}
+								<form action="/scoreMovie" method="get">
+									<input type="text" value="{{movie['_id']}}" name="movie_id" hidden>
+									<ul>
+									<li> <input type="radio" name="score" value="1" checked="checked"> 1 </li>
+									<li> <input type="radio" name="score" value="2" > 2</li>
+									<li> <input type="radio" name="score" value="3" > 3</li>
+									<li> <input type="radio" name="score" value="4" > 4</li>
+									<li> <input type="radio" name="score" value="5" > 5	</li>
+
+									</ul>
+									<input type="submit" value="评分">
+								</form>
+							{% else %}
+								<span>your score is {{movie['score'][0]}}</span>
+							{% end %}
 						</div>
 					</div>
 					<div class="clearfix"> </div>
@@ -332,8 +341,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="load_more">	
 								<ul id="myList">
 									<li>
-										<h4>Published on 15 June 2015</h4>
-										<p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
+										<h4>Published on {{movie['age']}}</h4>
+										<p>{{movie['summary']}}</p>
+										<p>starts: {{', '.join(movie['stars'])}}</p>
+										<p>director: {{movie['director']}}</p>
+										<form action="/buyMovie" method="get">
+											<input type="text" name="movie_id" value="{{movie['_id']}}" hidden>
+											<input type="submit" value="购买">
+										</form>
 									</li>
 									<li>
 										<p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
