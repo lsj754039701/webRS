@@ -1,29 +1,8 @@
-[2017-05-05 14:53:21 [line:34](indexHandler.py)] INFO: post [login] user_act:zll0
-[2017-05-05 14:53:24 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:204
-[2017-05-05 14:53:28 [line:19](buyMovieHandler.py)] INFO: get [buyMovie] user_id:1 movie_id:204
-[2017-05-05 14:53:28 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:204
-[2017-05-05 14:53:31 [line:18](scoreMvoieHandler.py)] INFO: get [scoreMovie] user_id:1 movie_id:204 score:5
-[2017-05-05 14:53:31 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:204
-[2017-05-05 14:53:36 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:423
-[2017-05-05 14:53:39 [line:19](buyMovieHandler.py)] INFO: get [buyMovie] user_id:1 movie_id:423
-[2017-05-05 14:53:39 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:423
-[2017-05-05 14:53:41 [line:18](scoreMvoieHandler.py)] INFO: get [scoreMovie] user_id:1 movie_id:423 score:1
-[2017-05-05 14:53:41 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:423
-[2017-05-05 14:53:44 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:204
-[2017-05-05 14:53:48 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:172
-[2017-05-05 14:53:52 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:385
-[2017-05-05 14:53:55 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:423
-[2017-05-05 14:53:58 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:204
-[2017-05-05 14:54:02 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:568
-[2017-05-05 14:54:08 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:474
-[2017-05-05 14:54:13 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:475
-[2017-05-05 14:54:16 [line:19](buyMovieHandler.py)] INFO: get [buyMovie] user_id:1 movie_id:475
-[2017-05-05 14:54:16 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:475
-[2017-05-05 14:54:21 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:475
-[2017-05-05 14:57:20 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:474
-[2017-05-05 14:57:25 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:172
-[2017-05-05 14:57:27 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:423
-[2017-05-05 14:57:30 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:204
-[2017-05-05 14:57:41 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:475
-[2017-05-05 14:57:59 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:204
-[2017-05-05 14:58:04 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:172
+[2017-05-10 15:29:22 [line:34](indexHandler.py)] INFO: post [login] user_act:zll0
+[2017-05-10 15:54:46 [line:34](indexHandler.py)] INFO: post [login] user_act:zll0
+[2017-05-10 16:01:43 [line:34](indexHandler.py)] INFO: post [login] user_act:zll0
+[2017-05-10 16:13:07 [line:34](indexHandler.py)] INFO: post [login] user_act:zll0
+[2017-05-10 22:28:42 [line:34](indexHandler.py)] INFO: post [login] user_act:zll0
+[2017-05-10 22:28:45 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:172
+[2017-05-11 15:22:19 [line:34](indexHandler.py)] INFO: post [login] user_act:zll0
+[2017-05-11 15:22:25 [line:15](movieInfoHandler.py)] INFO: get [movieInfo] user_id:1 movie_id:204

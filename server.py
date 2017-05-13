@@ -4,10 +4,10 @@ import tornado.ioloop
 import os
 import logging.config
 from algorithm import manager
+from algorithm import until
 import threading
 from handler import *
 import time
-from algorithm import until
 
 
 logging.config.fileConfig('conf/log.conf')
@@ -21,6 +21,13 @@ handlers = [
     (r'/registe', registeHandler),
     (r'/buyMovie', buyMovieHandler),
     (r'/scoreMovie', scoreMvoieHandler),
+    (r'/adminLogin', adminLoginHandler),
+    (r'/adminIndex', adminIndexHandler),
+    (r'/adminEvent', adminEventHandler),
+    (r'/adminAdd', adminAddHandler),
+    (r'/adminFind', adminFindHandler),
+    (r'/adminUpdate', adminUpdateHandler),
+    (r'/signout', signoutHandler),
 ]
 
 settings = {
@@ -42,7 +49,7 @@ def rs_server():
     print 'rs_server start'
     logger = logging.getLogger()
     while True:
-        time.sleep(100)
+        time.sleep(24*60*60)
         print 'start update rs_manager'
         until.scored = {}
         until.buyed = []
@@ -61,7 +68,6 @@ if __name__ == '__main__':
     rs_update = threading.Thread(target=rs_server)
     rs_update.setDaemon(True)
     rs_update.start()
-    # until.webLog.update_manager()
     web_server()
 
     # from spider import spider_movies

@@ -38,6 +38,13 @@ def get_all(table):
     """ % table
 
 
+def get_score_behavior():
+    return """
+        select * from behavior
+        where rate=0
+    """
+
+
 def get_cnt(table):
     return """select count(*) from %s""" % table
 
@@ -91,3 +98,7 @@ def get_movie_score(user_id, item_id):
 
 def get_user_by_id(user_id):
     return """select * from user where id=%s""" % user_id
+
+
+def get_admin_pwd(act="admin"):
+    return """select pwd from admin where account='%s'""" % act

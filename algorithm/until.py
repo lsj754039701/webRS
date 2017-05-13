@@ -119,8 +119,8 @@ class webLog:
                 movie_id = log['behavior']['movie_id']
                 buys.append((user_id, movie_id, 0, timestamp))
 
-        print 'score: ', scores
-        print 'buys: ', buys
+        # print 'score: ', scores
+        # print 'buys: ', buys
         model.insert_behaviors(buys)
         for s in scores:
             model.update_user_behavior(s[0], s[1], s[2])

@@ -10,6 +10,7 @@ class rsManager:
         self.userCF = self.get_userCF()
         self.user_cool = self.get_user_cool()
         self.item_cool = self.get_item_cool()
+        # self.item_cool.recommend(61)
 
     def get_itemCF(self, k=8):
         return CF.CF(k)

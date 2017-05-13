@@ -22,6 +22,10 @@ def find_movie_by_id(id):
     return list(mongo_sql.find(mongo_sql.get_collection('movie'), cond={'_id': id}))
 
 
+def find_movie_by_name(name):
+    return list(mongo_sql.find(mongo_sql.get_collection('movie'), cond={'name': name}))
+
+
 def find_new_movies():
     new_movies = []
     moviesID = list(mongo_sql.find(mongo_sql.get_collection('movie'), cond={}, field={'_id': 1}))
@@ -38,3 +42,11 @@ def insert_web_log(data):
 
 def find_web_log(cond):
     return mongo_sql.find(mongo_sql.get_collection('webLog'), cond=cond)
+
+
+def get_movies_num():
+    return mongo_sql.get_collection('movie').find().count()
+
+
+def save_movie(movie):
+    return mongo_sql.save(mongo_sql.get_collection('movie'), movie)

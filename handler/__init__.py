@@ -6,3 +6,10 @@ from movieInfoHandler import *
 from registeHandler import *
 from buyMovieHandler import *
 from scoreMvoieHandler import *
+from adminLoginHandler import adminLoginHandler
+from adminIndexHandler import adminIndexHandler
+from adminEventHandler import adminEventHandler
+from adminAddHandler import adminAddHandler
+from adminUpdateHandler import adminUpdateHandler
+from adminFindHandler import adminFindHandler
+from signoutHandler import signoutHandler

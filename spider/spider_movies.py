@@ -2,42 +2,48 @@ import model
 import multiprocessing
 import movies
 import img
-# from spider import *
-# s = movies.movieSpider()
-# print s.spider("http://us.imdb.com/M/title-exact?Schrei%20aus%20Stein%20(1991)")
-# print s.spider("http://us.imdb.com/M/title-exact?Sweet%20Nothing%20(1995)")
-# print s.get_movie_info("a")
+from pymongo import MongoClient
 
-def fun(movie):
-    from spider import *
-    from model import *
-    print 'start spider %s' % movie[1]
+
+def fun(movie, k):
+    from spider import movies
+    import model
+    print 'start spider %s' % movie
     s = movies.movieSpider()
-    res = s.get_movie_info(movie)
-    # print 'it is ', res
+    # res = s.get_movie_info(movie)
+    res = s.add_movie(movie)
+    print 'it is ', res
     if res is not None:
-        mongo.insert_movie(res)
+        res['_id'] = k
+        print 'k: ', k
+        model.mongo.insert_movie(res)
+        load_img(res)
+        print res
+        client = MongoClient('localhost', 27017)
+        success = client.rs.success
+        success.insert({'name': movie})
     else:
-        name = '/home/zll/PycharmProjects/spdier/%s' % movie[1]
-        with open(name) as f:
-            if len(s.fail_movie) > 0:
-                f.write(s.fail_movie[0] + '\n')
+        client = MongoClient('localhost', 27017)
+        fail = client.rs.fail
+        fail.insert({'name': movie})
 
 
-def spider_movies():
+def spider_movies(all_movies):
     pool = multiprocessing.Pool(processes=30)
-    all_movies = model.get_all_movie()
-    k = 0
+    # all_movies = model.get_all_movie()
+    num = model.mongo.get_movies_num()
+    k = num + 1000
     for movie in all_movies:
-        # k += 1
-        # if k > 3:
-        #     break
-        # print movie
-        pool.apply_async(fun, args=(movie,))
+        k += 1
+        pool.apply_async(fun, args=(movie, k))
     pool.close()
     pool.join()
-    print 'end'
-
+    client = MongoClient('localhost', 27017)
+    success = client.rs.success
+    res = success.find()
+    # success.drop()
+    return list(res)
+    # print 'end'
 
 
 def img_process(movie, lock):
@@ -58,22 +64,26 @@ def img_process(movie, lock):
         lock.release()
 
 
-def spider_imgs():
-    movies = model.mongo.find_all_movies()
-    pool = multiprocessing.Pool(processes=30)
-    manager = multiprocessing.Manager()
-    lock = manager.Lock()
+def load_img(movie):
+    import img
     spider = img.imgSpider()
-    for movie in movies:
-        pic = spider.get_imgs(movie)
-        if pic is None:
-            with open("/home/zll/pic/fail.txt", "w") as f:
-                f.write(str(movie["_id"]) + '\n')
-        else:
-            localtion = "/home/zll/pic/" + str(movie['_id']) + ".jpg"
-            fp = open(localtion, "wb")
-            fp.write(pic.content)
-            fp.close()
+    pic = spider.get_imgs(movie)
+    if pic is None:
+        client = MongoClient('localhost', 27017)
+        fail = client.rs.fail
+        fail.insert({'img': movie['_id']})
+    else:
+        localtion = "/home/zll/PycharmProjects/RS/static/images/movies/" + str(movie['_id']) + ".jpg"
+        # localtion = '/home/zll/pic2/' + str(movie['_id']) + ".jpg"
+        fp = open(localtion, "wb")
+        fp.write(pic.content)
+        fp.close()
+
+def spider_imgs(all_movies):
+    # movies = model.mongo.find_all_movies()
+    pool = multiprocessing.Pool(processes=30)
+    for movie in all_movies:
+        load_img(movie)
 
 
 

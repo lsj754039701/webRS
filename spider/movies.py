@@ -1,8 +1,9 @@
-# -*- coding=utf-8 -*
+# -*- coding=utf-8 -*-
 import urllib
 import urllib2
 from bs4 import BeautifulSoup
 import logging
+import re
 import traceback
 
 def writeFile(str):
@@ -58,6 +59,11 @@ class movieSpider:
     def find_movie_info(self, soup):
         logger = logging.getLogger('spider')
         try:
+            # name
+            movie_name = self.get_name(soup)
+            # print 'movie_name=> ', [movie_name], [self.cur_movie.title()]
+            if (movie_name is None) or (movie_name != self.cur_movie.title()):
+                return None
             # summary
             divs = soup.find_all('div', class_='plot_summary_wrapper')[0]
             summary_div = divs.find('div', class_='summary_text')
@@ -80,8 +86,8 @@ class movieSpider:
                 if div.find('h4').string == 'Director:':
                     for a in div.find_all('a'):
                         director = a.contents[0].string
-            # type
-            movie_type = self.get_type(soup)
+            # age, type
+            movie_type, movie_age = self.get_type(soup)
         except Exception, e:
             print 'html error. ', e.message
             logger.error('html error. ', exc_info=True)
@@ -95,7 +101,21 @@ class movieSpider:
         movie_info['summary'] = summary_div.get_text().strip()
         movie_info['img_url'] = img_url
         movie_info["type"] = movie_type
+        movie_info["age"] = movie_age
+        movie_info["name"] = movie_name
         return movie_info
+
+    def get_name(self, soup):
+        try:
+            h1 = soup.find('h1', itemprop='name')
+            name = h1.get_text()
+            pal = re.compile(r'([! \w]+).*')
+            res = pal.match(name.lower())
+            name = res.group(1).title()
+        except Exception, e:
+            raise Exception("spider: get movie name error.\n" + e.message)
+            return None
+        return name
 
     def get_type(self, soup):
         try:
@@ -105,10 +125,11 @@ class movieSpider:
             lable = []
             for i in range(len(a)-1):
                 lable.append(a[i].string)
+            age = a[-1].get_text()
         except Exception, e:
             raise Exception("spider: get movie type error.\n" + e.message)
             return None
-        return lable
+        return lable, age.strip()
 
     def get_html(self, req):
         logger = logging.getLogger('spider')
@@ -133,25 +154,12 @@ class movieSpider:
         # writeFile(html)
         return movie_info
 
-    def get_movie_info2(self, movie):
-        self.cur_movie = movie[1]
-        print movie
-        name = movie[1]
-        age = name.split('(')[1].split(')')[0]
-        res = self.search('Scream of Stone (Schrei aus Stein) (1991)')
-        print res
-        if 'url' in res:
-            movie_info = self.spider(res['url'])
-            if movie_info is not None:
-                movie_info['age'] = age
-        return movie_info
-
     def make_spider_res(self, url, name):
         for i in range(3):
             movie_info = self.spider(url)
             if movie_info is not None:
-                age = name.split('(')[1].split(')')[0]
-                movie_info['age'] = age
+                # age = name.split('(')[1].split(')')[0]
+                # movie_info['age'] = age
                 break
             elif self.cur_status == spiderStatus.htmlerror:
                 break
@@ -177,4 +185,23 @@ class movieSpider:
             logger.info("success spider %s" % movie[1])
         else:
             logger.info("fail spider %s" % movie[1])
+        return movie_info
+
+    # movie is name
+    def add_movie(self, movie):
+        import logging
+        logger = logging.getLogger('spider')
+        logger.info('start to add movie by spidering %s' % movie)
+        self.cur_movie = movie
+        for i in range(3):
+            res = self.search(self.cur_movie)
+            if 'url' in res:
+                movie_info = self.make_spider_res(res['url'], self.cur_movie)
+                break
+        if movie_info is not None:
+            # movie_info['name'] = self.cur_movie
+            # movie_info['_id'] = movie[0]
+            logger.info("success spider %s" % movie)
+        else:
+            logger.info("fail spider %s" % movie)
         return movie_info

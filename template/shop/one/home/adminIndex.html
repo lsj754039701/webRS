@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <style type="text/css">
+        .fatherDiv {
+            margin: 0 auto;
+            border: 1px solid skyblue;
+            width: 200px;
+            height: 300px;
+        }
+        ul li
+        {
+            list-style-type:none;
+        }
+    </style>
+</head>
+<body>
+    <div class="fatherDiv">
+        <form action="/adminEvent" method="get">
+            <span>选择功能：</span>
+            <ul>
+                <li> <input type="radio" name="event" value="add" checked="checked"> 添加 </li>
+                <li> <input type="radio" name="event" value="find"> 查找 </li>
+            </ul>
+            <div style="text-align: center">
+                <input type="submit" value="提交">
+            </div>
+
+        </form>
+
+    </div>
+</body>
+</html>

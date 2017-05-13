@@ -68,6 +68,10 @@ def get_all_behavior():
     return fetchall(sql_statement.get_all("behavior"))
 
 
+def get_score_behavior():
+    return fetchone(sql_statement.get_score_behavior())
+
+
 def insert_user(user):
     return update(sql_statement.insert_user(user))
 
@@ -128,3 +132,11 @@ def can_score(user_id, item_id):
 
 def get_user_by_id(user_id):
     return fetchone(sql_statement.get_user_by_id(user_id))
+
+
+def admin_login(act, pwd):
+    new_pwd = fetchone(sql_statement.get_admin_pwd(act))
+    if (new_pwd is not None) and (new_pwd[0] == pwd):
+        return True
+    else:
+        return False

@@ -27,5 +27,16 @@ def find(col, cond={}, field={}):
         logger.error('find %s by' % str(col) + str(cond), exc_info=True)
         return None
 
+def save(col, movie):
+    logger = logging.getLogger()
+    logging.info('save movie: %s by' % movie)
+    try:
+        col.save(movie)
+        return True
+    except Exception, e:
+        logger.error('error: save movie: %s by' % movie, exc_info=True)
+        return False
+
+
 if __name__ == '__main__':
     res= find(get_collection('movie'))

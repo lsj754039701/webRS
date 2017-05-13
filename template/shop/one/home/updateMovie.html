@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .fatherDiv {
+            margin: 0 auto;
+            border: 1px solid skyblue;
+            width: 400px;
+            height: 370px;
+        }
+        ul li
+        {
+            list-style-type:none;
+        }
+        .inputText {
+            width:300px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.get("/adminIndex")
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="fatherDiv">
+
+            <div>
+                <form action="/adminUpdate" method="get">
+                    <table>
+                        <tr>
+                            <td> 电影id：  </td>
+                            <td> <input class="inputText" type="text" name="movie_id" value="{{movie['_id']}}"> </td>
+                        </tr>
+                        <tr>
+                            <td> 电影名字：</td>
+                            <td> <input class="inputText" type="text" name="movie_name" value="{{movie['name']}}"> </td>
+                        </tr>
+                        <tr>
+                            <td> 电影类型：</td>
+                            <td> <input class="inputText" type="text" name="movie_type" value="{{';'.join(movie['type'])}}"> </td>
+                        </tr>
+                        <tr>
+                            <td> 电影导演：</td>
+                            <td> <input class="inputText" type="text" name="movie_director" value="{{movie['director']}}"> </td>
+                        </tr>
+                        <tr>
+                            <td> 电影主演：</td>
+                            <td>
+                                <input class="inputText" type="text" name="movie_stars"  value="{{';'.join(movie['stars'])}}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> 电影简介：</td>
+                            <td> <textarea name="movie_summary" cols=40 rows=40 style="height:150px;width:300px;">
+                                 {{movie['summary']}}
+                                 </textarea>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="text-align: center">
+                        <input type="submit" value="修改" name="update">
+
+                    </div>
+                </form>
+                <div  style="text-align: center;margin: 2px;">
+                    <form action="/adminIndex" method="get">
+                            <input type="submit" value="返回主界面">
+                        </form>
+                </div>
+            </div>
+
+    </div>
+</body>
+</html>
